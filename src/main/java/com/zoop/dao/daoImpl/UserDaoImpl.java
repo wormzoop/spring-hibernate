@@ -2,6 +2,7 @@ package com.zoop.dao.daoImpl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +17,11 @@ public class UserDaoImpl implements UserDao{
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	@SuppressWarnings("unchecked")
 	public List<User> getUserList() {
-		return null;
+		String hql = "select * from User";
+		Query query = getSession().createQuery(hql);
+		return query.list();
 	}
 
 	private Session getSession(){
