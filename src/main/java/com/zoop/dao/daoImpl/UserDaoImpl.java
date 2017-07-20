@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 import com.zoop.dao.UserDao;
 import com.zoop.entity.User;
 
-@Repository
+@Repository("userDao")
 public class UserDaoImpl implements UserDao{
 
 	@Autowired
@@ -19,13 +19,13 @@ public class UserDaoImpl implements UserDao{
 	
 	@SuppressWarnings("unchecked")
 	public List<User> getUserList() {
-		String hql = "select * from User";
+		String hql = "select id,name from User";
 		Query query = getSession().createQuery(hql);
 		return query.list();
 	}
 
 	private Session getSession(){
-		return sessionFactory.getCurrentSession();
+		return sessionFactory.openSession();
 	}
 	
 }

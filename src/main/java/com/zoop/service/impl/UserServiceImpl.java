@@ -9,7 +9,7 @@ import com.zoop.dao.UserDao;
 import com.zoop.entity.User;
 import com.zoop.service.UserService;
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements UserService{
 
 	@Autowired
